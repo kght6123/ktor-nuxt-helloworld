@@ -1,0 +1,22 @@
+# Hello World for Ktor
+# Hello World.
+
+###
+
+# Add a new hello to the store
+POST {{host}}/hello
+Content-Type: application/json
+
+{
+    "body": {
+        "id": 0,
+        "category": {
+            "id": 0,
+            "name": "body.category.name"
+        },
+        "name": "body.name",
+        "tags": [],
+        "status": "body.status"
+    }
+}
+
