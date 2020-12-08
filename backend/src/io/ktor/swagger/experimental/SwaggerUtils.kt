@@ -36,11 +36,9 @@ inline fun <T> T.checkRequest(cond: Boolean, callback: () -> String) {
     if (!cond) httpException(HttpStatusCode.BadRequest, callback())
 }
 
-interface SwaggerBaseApi {
-}
+interface SwaggerBaseApi
 
-interface SwaggerBaseServer {
-}
+interface SwaggerBaseServer
 
 class ApplicationCallContext(val call: ApplicationCall) : CoroutineContext.Element {
     object KEY : CoroutineContext.Key<ApplicationCallContext>
@@ -306,7 +304,7 @@ val java.lang.Class<*>.allTypes: Set<Class<*>>
         val types = LinkedHashSet<Class<*>>()
         val explore = arrayListOf(this)
         while (explore.isNotEmpty()) {
-            val item = explore.removeAt(explore.size - 1) ?: continue
+            val item = explore.removeAt(explore.size - 1)
             types += item
             explore += item.superclass
             explore += item.interfaces

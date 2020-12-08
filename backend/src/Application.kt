@@ -14,6 +14,8 @@ import io.ktor.features.*
 import kotlin.reflect.*
 import java.util.*
 import io.ktor.swagger.experimental.*
+import jp.kght6123.ktor.helloworld.factory.DatabaseFactory
+import jp.kght6123.ktor.helloworld.service.HelloService
 
 fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args)
 
@@ -31,6 +33,8 @@ fun Application.module(testing: Boolean = false) {
             enable(SerializationFeature.INDENT_OUTPUT)
         }
     }
+
+    DatabaseFactory.init()
 
     routing {
         get("/") {
@@ -55,7 +59,7 @@ fun Application.module(testing: Boolean = false) {
         }
 
         HelloWorldForKtorServer().apply {
-            registerHello()
+            hello(HelloService())
         }
     }
 }

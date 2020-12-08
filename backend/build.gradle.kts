@@ -35,6 +35,12 @@ dependencies {
     implementation("io.ktor:ktor-jackson:$ktor_version")
     implementation("io.ktor:ktor-server-host-common:$ktor_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+    implementation("org.jetbrains.exposed", "exposed-core", "0.28.1")
+    implementation("org.jetbrains.exposed", "exposed-dao", "0.28.1")
+    implementation("org.jetbrains.exposed", "exposed-jdbc", "0.28.1")
+    implementation("com.zaxxer", "HikariCP", "3.4.5")
+    implementation("com.h2database", "h2", "1.4.200")
+    implementation("org.flywaydb", "flyway-core", "7.3.1")
 }
 
 kotlin.sourceSets["main"].kotlin.srcDirs("src")

@@ -1,34 +1,50 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        ktor-nuxt-helloworld-frontend
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    <Logo />
+    <div v-for="todo in todoList" :key="todo.id">
+      {{ todo.hello }}
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  async mounted() {
+    const response = await this.$axios.get('/api/hello')
+    this.todoList = response.data
+  },
+  data() {
+    return {
+      search: '',
+      todo: {
+        id: 1,
+        hello: 'hello world!!!',
+      },
+      todoList: [],
+    }
+  },
+  methods: {
+    async create() {
+      await this.$axios.post('/api/hello', this.todo).then(() => {
+        this.$router.app.refresh()
+      })
+      this.close()
+    },
+    async update() {
+      await this.$axios
+        .put('/api/hello/' + this.todo.id, this.todo)
+        .then(() => {
+          this.$router.app.refresh()
+        })
+      this.close()
+    },
+    async remove(todo) {
+      await this.$axios.delete('/api/hello/' + todo.id, todo).then(() => {
+        this.$router.app.refresh()
+      })
+    },
+  },
+}
 </script>
 
 <style>
@@ -47,16 +63,8 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

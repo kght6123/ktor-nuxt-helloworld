@@ -1,0 +1,21 @@
+{
+  // "eslint.options": {
+  //   "extensions": [".html", ".js", ".vue"]
+  // },
+  // "eslint.validate": [
+  //   "javascript",
+  //   {
+  //     "language": "vue",
+  //     "autoFix": true
+  //   }
+  // ],
+  // "eslint.autoFixOnSave": true,
+  // "editor.formatOnSave": true,
+  // "editor.codeActionsOnSave": {
+  //     "source.fixAll.eslint": true
+  // },
+  "prettier.eslintIntegration": true
+  // "editor.codeActionsOnSave": {
+  //     "source.fixAll.eslint": true
+  // }
+}
