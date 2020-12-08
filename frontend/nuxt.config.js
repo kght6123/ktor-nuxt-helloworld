@@ -32,22 +32,31 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
+    // '@nuxtjs/proxy',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
-  proxy: {
-    '/api/': {
-      target: 'http://localhost:8080',
-      // target: 'http://[::1]:8080',
-      // secure: false,
-      // logLevel: 'debug',
-      // changeOrigin: true,
-      pathRewrite: { '^/api/': '' },
-    },
+  axios: {
+    // proxy: true,
+    baseURL: 'http://localhost:8080',
   },
+
+  // server: {
+  //   port: 3000,
+  //   host: '0.0.0.0',
+  // },
+
+  // proxy: {
+  //   '/api/': 'http://127.0.0.1:8080/',
+  //   // '/api/': {
+  //   //   // target: 'http://localhost:8080',
+  //   //   target: 'http://localhost:8080',
+  //   //   secure: false,
+  //   //   logLevel: 'debug',
+  //   //   changeOrigin: true,
+  //   //   pathRewrite: { '^/api': '' },
+  //   // },
+  // },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},

@@ -4,6 +4,9 @@
     <div v-for="todo in todoList" :key="todo.id">
       {{ todo.hello }}
     </div>
+    <button @click="create">Create</button>
+    <button @click="update">Update</button>
+    <button @click="remove">Remove</button>
   </div>
 </template>
 
@@ -28,7 +31,6 @@ export default {
       await this.$axios.post('/api/hello', this.todo).then(() => {
         this.$router.app.refresh()
       })
-      this.close()
     },
     async update() {
       await this.$axios
@@ -36,12 +38,13 @@ export default {
         .then(() => {
           this.$router.app.refresh()
         })
-      this.close()
     },
-    async remove(todo) {
-      await this.$axios.delete('/api/hello/' + todo.id, todo).then(() => {
-        this.$router.app.refresh()
-      })
+    async remove() {
+      await this.$axios
+        .delete('/api/hello/' + this.todo.id, this.todo)
+        .then(() => {
+          this.$router.app.refresh()
+        })
     },
   },
 }
