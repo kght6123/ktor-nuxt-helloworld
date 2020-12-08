@@ -40,6 +40,11 @@ export default {
     // proxy: true,
     baseURL: 'http://localhost:8080',
   },
+  // proxyの問題点
+  // kght6123@air backend % curl -X GET http://localhost:3000/api/
+  // HELLO%
+  // kght6123@air backend % curl -X GET http://localhost:3000/api/hello/
+  // Error occured while trying to proxy to: localhost:3000/api/hello/
 
   // server: {
   //   port: 3000,
